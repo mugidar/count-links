@@ -27,11 +27,18 @@ function App() {
 
 	useEffect(() => {
 		for (let i in counts) {
-			setDisplayedCount(prev => [...prev, { videoLink: i, count: counts[i] }].sort((a,b) => b.count-a.count))
+			setDisplayedCount(prev =>
+				[...prev, { videoLink: i, count: counts[i] }].sort(
+					(a, b) => b.count - a.count
+				)
+			)
 		}
-		
-    const total = Object.values(counts).reduce((prev, cur) => prev+cur , totalLinks )
-    setTotalLinks(total)
+
+		const total = Object.values(counts).reduce(
+			(prev, cur) => prev + cur,
+			0
+		)
+		setTotalLinks(total)
 	}, [counts])
 
 	return (
@@ -59,10 +66,9 @@ function App() {
 				</div>
 
 				<div className="output border-2 p-2">
-       
 					{displayedCount.length > 0 ? (
 						<>
-               <h1 className='font-bold text-xl'>Всего: {totalLinks}</h1>
+							<h1 className="font-bold text-xl">Всего: {totalLinks}</h1>
 							<table className="flex flex-col">
 								<tbody className="p-4">
 									{displayedCount.map(count => (
