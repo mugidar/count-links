@@ -69,11 +69,12 @@ function App() {
 					{displayedCount.length > 0 ? (
 						<>
 							<h1 className="font-bold text-xl">Всего: {totalLinks}</h1>
+							<h1 className="font-bold text-xl">Уникальных: {displayedCount.length}</h1>
 							<table className="flex flex-col">
 								<tbody className="p-4">
-									{displayedCount.map(count => (
+									{displayedCount.map((count,index)=> (
 										<tr key={count.videoLink}>
-											<td className="p-1">{count.videoLink}</td>
+											<td className="p-1"><span className='font-bold'>{index+1}: </span>{count.videoLink}</td>
 											<td
 												className={clsx(
 													'p-1 text-xl font-bold',
