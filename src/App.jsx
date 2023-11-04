@@ -117,7 +117,8 @@ const testString = `Прямые эфиры привлекательны тем,
 `
 
 function App() {
-	const [text, setText] = useState(``)
+	const storagedText = localStorage.getItem("text")
+	const [text, setText] = useState(storagedText || ``)
 	const [counts, setCounts] = useState({})
 	const [displayedCount, setDisplayedCount] = useState([])
 	const [totalLinks, setTotalLinks] = useState(0)
@@ -171,7 +172,10 @@ function App() {
 						value={text}
 						cols={70}
 						rows={10}
-						onChange={e => setText(e.target.value)}
+						onChange={e => {
+							setText(e.target.value)
+							localStorage.setItem('text', text)
+						}}
 					/>
 					<button
 						className="px-4 py-2 mt-2 bg-green-400 rounded-lg"
