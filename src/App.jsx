@@ -9,7 +9,9 @@ function App() {
 	const [counts, setCounts] = useState({})
 	const [displayedCount, setDisplayedCount] = useState([])
 	const [totalLinks, setTotalLinks] = useState(0)
-	const countVideos = () => {
+
+
+	useEffect(() => {
 		setDisplayedCount([])
 		setCounts([])
 		const stringLines = text.split(/\r?\n/)
@@ -24,9 +26,6 @@ function App() {
 		filteredLinks.forEach(item =>
 			setCounts(prev => ({ ...prev, [item]: (prev[item] || 0) + 1 }))
 		)
-	}
-
-	useEffect(() => {
 		localStorage.setItem('text', text)
 	}, [text])
 	
@@ -65,12 +64,7 @@ function App() {
 						rows={10}
 						onChange={e => setText(e.target.value)}
 					/>
-					<button
-						className="px-4 py-2 mt-2 bg-green-400 rounded-lg"
-						onClick={countVideos}
-					>
-						Подсчитать
-					</button>
+			
 				</div>
 
 				<div className="flex w-[330px] items-start">
