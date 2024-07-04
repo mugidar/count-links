@@ -81,7 +81,7 @@ function App() {
 											<tr key={count.videoLink}>
 												<td className="p-1">
 													<span className="font-bold">{index + 1}: </span>
-													{count.videoLink}
+													<a href={count.videoLink} target='_blank'>{count.videoLink}</a>
 												</td>
 												<td
 													className={clsx(
